@@ -57,8 +57,6 @@ Console.WriteLine(myUrl);
 
 // Log the image tag for the transformed asset to the console
 Console.WriteLine(myImageTag);
-//////////////
-///
 
 
 builder.Services.AddEndpointsApiExplorer();
