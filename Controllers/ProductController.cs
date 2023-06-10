@@ -17,7 +17,7 @@ namespace MerchantApi.Controllers
             _db = db;
             _response = new ApiResponse();
         }
-        [HttpPost]
+        [HttpGet]
         public async Task<IActionResult> GetProducts()
         {
             _response.Result = _db.Products;
@@ -26,7 +26,7 @@ namespace MerchantApi.Controllers
             return Ok(_response);
         }
 
-        [HttpPost("{id:int}")]
+        [HttpGet("{id:int}")]
         public async Task<IActionResult> GetProduct(int id)
         {
            if(id == 0)
