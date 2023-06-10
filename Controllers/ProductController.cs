@@ -118,5 +118,35 @@ namespace MerchantApi.Controllers
             }
             return _response;
         }
+
+        [HttpDelete("id:int")]
+        public async Task<ActionResult<ApiResponse>> DeleteProduct(int id)
+        {
+            try
+            {
+                if (id == 0)
+                {
+                    _response.StatusCode = HttpStatusCode.BadRequest;
+                    _response.IsSuccess = false;
+                    return BadRequest();
+                }
+                Product productFromDb = await _db.Products.FindAsync(id);
+                if (productFromDb == null)
+                {
+                    return BadRequest();
+                }
+                _db.Products.Remove(productFromDb);
+                _db.SaveChanges();
+                _response.StatusCode = HttpStatusCode.NoContent;
+                _response.IsSuccess = true;
+            }
+            catch(Exception ex)
+            {
+                _response.StatusCode = HttpStatusCode.BadRequest;
+                _response.IsSuccess = false;
+                return BadRequest();
+            }
+               return _response;
+        }
     }
 }
