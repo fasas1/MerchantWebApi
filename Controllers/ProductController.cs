@@ -21,6 +21,7 @@ namespace MerchantApi.Controllers
         public async Task<IActionResult> GetProducts()
         {
             _response.Result = _db.Products;
+            _response.IsSuccess = false;
             _response.StatusCode = HttpStatusCode.OK;
          
             return Ok(_response);
