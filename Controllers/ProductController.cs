@@ -25,5 +25,25 @@ namespace MerchantApi.Controllers
          
             return Ok(_response);
         }
+
+        [HttpPost("{id:int}")]
+        public async Task<IActionResult> GetProduct(int id)
+        {
+           if(id == 0)
+            {
+                _response.StatusCode = HttpStatusCode.BadRequest;
+                return BadRequest(_response);
+            }
+            Product product = _db.Products.FirstOrDefault(u => u.Id == id);
+            if(product == null)
+            {
+                _response.StatusCode = HttpStatusCode.NotFound;
+               return NotFound(_response);
+            }
+            _response.Result = product;
+            _response.StatusCode = HttpStatusCode.OK;
+
+            return Ok(_response);
+        }
     }
 }
