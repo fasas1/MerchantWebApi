@@ -21,7 +21,7 @@ namespace MerchantApi.Controllers
         public async Task<IActionResult> GetProducts()
         {
             _response.Result = _db.Products;
-            _response.IsSuccess = false;
+          
             _response.StatusCode = HttpStatusCode.OK;
          
             return Ok(_response);
@@ -33,6 +33,7 @@ namespace MerchantApi.Controllers
            if(id == 0)
             {
                 _response.StatusCode = HttpStatusCode.BadRequest;
+                _response.IsSuccess = false;
                 return BadRequest(_response);
             }
             Product product = _db.Products.FirstOrDefault(u => u.Id == id);
