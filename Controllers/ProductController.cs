@@ -28,7 +28,7 @@ namespace MerchantApi.Controllers
             return Ok(_response);
         }
 
-        [HttpGet("{id:int}, Name=GetProduct")]
+        [HttpGet("{id:int}", Name = "GetProduct")]
         public async Task<IActionResult> GetProduct(int id)
         {
            if(id == 0)
