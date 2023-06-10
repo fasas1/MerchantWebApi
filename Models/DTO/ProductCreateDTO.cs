@@ -1,11 +1,10 @@
 ﻿using System.ComponentModel.DataAnnotations;
 
-namespace MerchantApi.Models
+namespace MerchantApi.Models.DTO
 {
-    public class Product
+    public class ProductCreateDTO
     {
-        [Key]
-        public int Id { get; set; }
+      
         [Required]
         public string Name { get; set; }
         public string Description { get; set; }

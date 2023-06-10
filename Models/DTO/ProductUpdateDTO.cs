@@ -1,8 +1,8 @@
 ﻿using System.ComponentModel.DataAnnotations;
 
-namespace MerchantApi.Models
+namespace MerchantApi.Models.DTO
 {
-    public class Product
+    public class ProductUpdateDTO
     {
         [Key]
         public int Id { get; set; }
