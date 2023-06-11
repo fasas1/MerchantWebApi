@@ -119,7 +119,7 @@ namespace MerchantApi.Controllers
             return _response;
         }
 
-        [HttpDelete("id:int")]
+        [HttpDelete("{id:int}", Name = "GetProduct")]
         public async Task<ActionResult<ApiResponse>> DeleteProduct(int id)
         {
             try
