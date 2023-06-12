@@ -4,6 +4,7 @@ using MerchantApi.Models.DTO;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
+using System.Net;
 
 namespace MerchantApi.Controllers
 {
@@ -24,9 +25,17 @@ namespace MerchantApi.Controllers
            secretKey = configuration.GetValue<string>("ApiSettings:Secret");
         }
         [HttpPost]
-        public async Task <IActionResult> Register([FromBody] ProductCreateDTO model)
+        public async Task <IActionResult> Register([FromBody] RegisterRequestDTO model)
         {
-             ApplicationUser userFromDb = _db.ApplicationUsers.FirstOrDefault(u => u.UserName.ToLower() == model.UserName.ToLower());
+            ApplicationUser userFromDb = _db.ApplicationUsers.FirstOrDefault
+              (u => u.UserName.ToLower() == model.UserName.ToLower());
+            if(userFromDb != null)
+            {
+                _response.StatusCode = HttpStatusCode.BadRequest;
+                _response.IsSuccess = false;
+                _response.ErrorMessages.Add("Error while registering..");
+                return BadRequest(_response);
+            }
         }
     }
 }
