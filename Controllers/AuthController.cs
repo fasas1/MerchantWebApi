@@ -1,5 +1,6 @@
 ﻿using MerchantApi.Data;
 using MerchantApi.Models;
+using MerchantApi.Models.DTO;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
@@ -21,6 +22,11 @@ namespace MerchantApi.Controllers
             _db = db;
             _response = new ApiResponse();
            secretKey = configuration.GetValue<string>("ApiSettings:Secret");
+        }
+        [HttpPost]
+        public async Task <IActionResult> Register([FromBody] ProductCreateDTO model)
+        {
+             ApplicationUser userFromDb = _db.ApplicationUsers.FirstOrDefault(u => u.UserName.ToLower() == model.UserName.ToLower());
         }
     }
 }
