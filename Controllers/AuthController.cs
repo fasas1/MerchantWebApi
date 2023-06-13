@@ -28,8 +28,13 @@ namespace MerchantApi.Controllers
             _userManager = userManager;
         }
 
+        [HttpPost("login")]
+        public async Task<IActionResult> Login([FromBody] LoginRequestDTO model)
+        {
 
-        [HttpPost("register")]
+        }
+
+            [HttpPost("register")]
         public async Task<IActionResult> Register([FromBody] RegisterRequestDTO model)
         {
             ApplicationUser userFromDb = _db.ApplicationUsers
