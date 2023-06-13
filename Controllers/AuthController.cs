@@ -33,7 +33,17 @@ namespace MerchantApi.Controllers
         {
              ApplicationUser userFromDb = _db.ApplicationUsers
                  .FirstOrDefault(u => u.UserName.ToLower() == model.UserName.ToLower());
-             bool isValid = await _userManager.CheckPasswordAsync(userFromDb, model.Password)
+            bool isValid = await _userManager.CheckPasswordAsync(userFromDb, model.Password);
+                if(isValid == false)
+               {
+                 _response.Result  = new LoginResponseDTO();
+                _response.StatusCode = HttpStatusCode.BadRequest;
+                _response.IsSuccess = false;
+                _response.ErrorMessages.Add("Username or Password is incorrect");
+                return BadRequest(_response);
+
+
+               }
         }
 
         [HttpPost("register")]
