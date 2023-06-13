@@ -31,10 +31,12 @@ namespace MerchantApi.Controllers
         [HttpPost("login")]
         public async Task<IActionResult> Login([FromBody] LoginRequestDTO model)
         {
-
+             ApplicationUser userFromDb = _db.ApplicationUsers
+                 .FirstOrDefault(u => u.UserName.ToLower() == model.UserName.ToLower());
+             bool isValid = await _userManager.CheckPasswordAsync(userFromDb, model.Password)
         }
 
-            [HttpPost("register")]
+        [HttpPost("register")]
         public async Task<IActionResult> Register([FromBody] RegisterRequestDTO model)
         {
             ApplicationUser userFromDb = _db.ApplicationUsers
