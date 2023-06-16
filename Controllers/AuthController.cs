@@ -5,7 +5,9 @@ using MerchantApi.Utility;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
+using System.IdentityModel.Tokens.Jwt;
 using System.Net;
+using System.Text;
 
 namespace MerchantApi.Controllers
 {
@@ -42,6 +44,10 @@ namespace MerchantApi.Controllers
                 _response.ErrorMessages.Add("Username or Password is incorrect");
                 return BadRequest(_response);
                }
+            //Generate JWT Token
+            var roles = await _userManager.GetRolesAsync(userFromDb);
+            JwtSecurityTokenHandler tokenHandler = new();
+            byte[] key = Encoding.ASCII.GetBytes(secretKey);
         }
 
         [HttpPost("register")]
