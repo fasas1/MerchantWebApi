@@ -41,8 +41,6 @@ namespace MerchantApi.Controllers
                 _response.IsSuccess = false;
                 _response.ErrorMessages.Add("Username or Password is incorrect");
                 return BadRequest(_response);
-
-
                }
         }
 
