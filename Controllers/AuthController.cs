@@ -33,21 +33,38 @@ namespace MerchantApi.Controllers
         [HttpPost("login")]
         public async Task<IActionResult> Login([FromBody] LoginRequestDTO model)
         {
-             ApplicationUser userFromDb = _db.ApplicationUsers
-                 .FirstOrDefault(u => u.UserName.ToLower() == model.UserName.ToLower());
+            ApplicationUser userFromDb = _db.ApplicationUsers
+                .FirstOrDefault(u => u.UserName.ToLower() == model.UserName.ToLower());
             bool isValid = await _userManager.CheckPasswordAsync(userFromDb, model.Password);
-                if(isValid == false)
-               {
-                 _response.Result  = new LoginResponseDTO();
+            if (isValid == false)
+            {
+                _response.Result = new LoginResponseDTO();
                 _response.StatusCode = HttpStatusCode.BadRequest;
                 _response.IsSuccess = false;
                 _response.ErrorMessages.Add("Username or Password is incorrect");
                 return BadRequest(_response);
-               }
+            }
             //Generate JWT Token
-            var roles = await _userManager.GetRolesAsync(userFromDb);
-            JwtSecurityTokenHandler tokenHandler = new();
-            byte[] key = Encoding.ASCII.GetBytes(secretKey);
+            //var roles = await _userManager.GetRolesAsync(userFromDb);
+            //JwtSecurityTokenHandler tokenHandler = new();
+            //byte[] key = Encoding.ASCII.GetBytes(secretKey);
+
+            LoginResponseDTO loginResponse = new()
+            {
+                Email = userFromDb.Email,
+                Token = "#REPLACE"
+            };
+            if (loginResponse.Email == null || string.IsNullOrEmpty(loginResponse.Token))
+            {
+                _response.StatusCode = HttpStatusCode.BadRequest;
+                _response.IsSuccess = false;
+                _response.ErrorMessages.Add("Username or Password is Incorrect");
+                return BadRequest(_response);
+            }
+            _response.StatusCode = HttpStatusCode.OK;
+            _response.IsSuccess = true;
+            _response.Result = loginResponse;
+            return Ok(_response);
         }
 
         [HttpPost("register")]
