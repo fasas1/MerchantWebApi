@@ -18,4 +18,4 @@
 .  JSON Web Tokens (JWT)
 
 ## Contributing
-Contributions to the ecommerce GadgetStore project are welcome! If you find any issues or have suggestions for improvements, please open an issue or submit a pull request.
+Contributions to the Merchant WebApu project are welcome! If you find any issues or have suggestions for improvements, please open an issue or submit a pull request.
