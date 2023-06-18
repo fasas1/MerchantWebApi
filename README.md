@@ -12,8 +12,10 @@
 ![Capture222](https://github.com/fasas1/MerchantWebApi/assets/47166372/76c7a877-ee2f-478a-a4f3-4f62690c4098)
 
 ## Technology Stack
-. .NET Web API
-. Entity Framework
-. SQL Server
-. JSON Web Tokens (JWT)
-. 
+.  .NET Web API
+.  Entity Framework
+.  SQL Server
+.  JSON Web Tokens (JWT)
+
+## Contributing
+Contributions to the ecommerce GadgetStore project are welcome! If you find any issues or have suggestions for improvements, please open an issue or submit a pull request.
