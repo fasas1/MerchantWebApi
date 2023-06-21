@@ -17,7 +17,8 @@
 .  Entity Framework
 .  SQL Server
 .  JSON Web Tokens (JWT)
-. PayStack
+.  PayStack
+.  Cloudinary
 
 
 ## Contributing
