@@ -17,6 +17,8 @@
 .  Entity Framework
 .  SQL Server
 .  JSON Web Tokens (JWT)
+. PayStack
+
 
 ## Contributing
 Contributions to the Merchant WebApu project are welcome! If you find any issues or have suggestions for improvements, please open an issue or submit a pull request.
