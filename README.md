@@ -1,7 +1,7 @@
 # Merchant WebApi
 ### This is an ecommerce application built with .NET Web API for a gadget store (Merchant Gadgets). It provides a platform for customers to browse and purchase various gadgets online. The application is designed to handle product listing, shopping cart management, order processing, admin panel and user authentication.
 
-##Features
+## Features
 1. Product Listing: Users can view a list of available gadgets along with their details, such as name, description, price, and availability.
 2. User Authentication: Users can create accounts, log in, and log out of the application. Authentication is required for placing orders and accessing certain features.
 3. Shopping Cart Management: Users can add gadgets to their shopping carts, update quantities, and remove items. The shopping cart allows users to review their selected items before proceeding to checkout.
