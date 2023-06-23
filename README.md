@@ -16,7 +16,7 @@
 .  .NET Web API
 .  Entity Framework
 .  SQL Server
-.  JSON Web Tokens (JWT)
+.  JSON Web Token (JWT)
 .  PayStack
 .  Cloudinary
 
