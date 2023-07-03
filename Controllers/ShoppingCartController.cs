@@ -22,12 +22,28 @@ namespace MerchantApi.Controllers
         {
             ShoppingCart shoppingCart = _db.ShoppingCarts.FirstOrDefault(u => u.UserId == userId);
             Product product = _db.Products.FirstOrDefault(u => u.Id == productId);
-            if (shoppingCart == null) {
+            if (product == null) {
                 _response.StatusCode = HttpStatusCode.BadRequest;
                 _response.IsSuccess = false;
                 return BadRequest(_response);
             }
+            if (shoppingCart == null && updateQuantityBy > 0)
+            {
+                ShoppingCart newCart = new() { UserId = userId };
+                _db.ShoppingCarts.Add(newCart);
+                _db.SaveChanges();
 
+                CartItem newCartItem = new()
+                {
+                    ProductId = productId,
+                    Quantity = updateQuantityBy,
+                    ShoppingCartId = newCart.Id,
+                    //Product = null
+                };
+                _db.CartItems.Add(newCartItem);
+                _db.SaveChanges();
+            }
+            return _response;
         }
     }
 }
