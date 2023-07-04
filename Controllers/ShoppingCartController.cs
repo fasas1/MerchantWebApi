@@ -28,7 +28,8 @@ namespace MerchantApi.Controllers
                 return BadRequest(_response);
             }
             if (shoppingCart == null && updateQuantityBy > 0)
-            {
+            { 
+               // Create Shipping Cart & Cart Item
                 ShoppingCart newCart = new() { UserId = userId };
                 _db.ShoppingCarts.Add(newCart);
                 _db.SaveChanges();
@@ -38,10 +39,14 @@ namespace MerchantApi.Controllers
                     ProductId = productId,
                     Quantity = updateQuantityBy,
                     ShoppingCartId = newCart.Id,
-                    //Product = null
+                    Product = null
                 };
                 _db.CartItems.Add(newCartItem);
                 _db.SaveChanges();
+            }
+            else
+            {
+                //shoppig cart exist 
             }
             return _response;
         }
