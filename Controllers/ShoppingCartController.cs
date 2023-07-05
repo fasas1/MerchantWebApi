@@ -29,6 +29,8 @@ namespace MerchantApi.Controllers
                     _response.StatusCode = HttpStatusCode.BadRequest;
                     return BadRequest(_response);
                 }
+               ShoppingCart shoppingCart = _db.ShoppingCarts.Include(u => u.CartItems)
+                                          .ThenInclude(u => u.Product).FirstOrDefault(u => u.UserId == userId);
             }
             catch(Exception ex)
             {
