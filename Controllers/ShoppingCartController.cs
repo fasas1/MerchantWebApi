@@ -18,6 +18,27 @@ namespace MerchantApi.Controllers
             _db = db;
             _response = new();
         }
+        [HttpGet]
+        public async Task<ActionResult<ApiResponse>> GetShoppingCart(string userId)
+        {
+            try
+            {
+              if(string.IsNullOrEmpty(userId))
+                {
+                    _response.IsSuccess = false;
+                    _response.StatusCode = HttpStatusCode.BadRequest;
+                    return BadRequest(_response);
+                }
+            }
+            catch(Exception ex)
+            {
+                _response.IsSuccess = false;
+                _response.ErrorMessages = new List<string> { ex.Message };
+                _response.StatusCode = HttpStatusCode.BadRequest;
+            }
+             return _response;
+        }
+
         [HttpPost]
         public async Task<ActionResult<ApiResponse>> AddOrUpdateItemInCart(string userId, int productId, int updateQuantityBy)
         {
