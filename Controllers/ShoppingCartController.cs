@@ -67,7 +67,7 @@ namespace MerchantApi.Controllers
                 {
                     // Item already exist in the shopping cart and we have to update quantity
                     int newQuantity = cartItemInCart.Quantity + updateQuantityBy;
-                     if(updateQuantityBy == 0 || updateQuantityBy <= 0)
+                     if(updateQuantityBy == 0 || newQuantity <= 0)
                     {
                         // remove cart item from cart and if it is the only item then remove cart
                         _db.CartItems.Remove(cartItemInCart);
