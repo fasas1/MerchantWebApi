@@ -23,23 +23,37 @@ namespace MerchantApi.Controllers
         {
             try
             {
-              if(string.IsNullOrEmpty(userId))
+                ShoppingCart shoppingCart;
+                if (string.IsNullOrEmpty(userId))
                 {
-                    _response.IsSuccess = false;
-                    _response.StatusCode = HttpStatusCode.BadRequest;
-                    return BadRequest(_response);
+                    shoppingCart = new();
                 }
-               ShoppingCart shoppingCart = _db.ShoppingCarts.Include(u => u.CartItems)
-                                          .ThenInclude(u => u.Product).FirstOrDefault(u => u.UserId == userId);
+                else
+                {
+                    shoppingCart = _db.ShoppingCarts
+                    .Include(u => u.CartItems).ThenInclude(u => u.Product)
+                    .FirstOrDefault(u => u.UserId == userId);
+
+                }
+                if (shoppingCart.CartItems != null && shoppingCart.CartItems.Count > 0)
+                {
+                    shoppingCart.CartTotal = shoppingCart.CartItems.Sum(u => u.Quantity * u.Product.Price);
+                }
+                _response.Result = shoppingCart;
+                _response.StatusCode = HttpStatusCode.OK;
+                return Ok(_response);
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
                 _response.IsSuccess = false;
-                _response.ErrorMessages = new List<string> { ex.Message };
+                _response.ErrorMessages
+                     = new List<string>() { ex.ToString() };
                 _response.StatusCode = HttpStatusCode.BadRequest;
             }
-             return _response;
+            return _response;
         }
+
+
 
         [HttpPost]
         public async Task<ActionResult<ApiResponse>> AddOrUpdateItemInCart(string userId, int productId, int updateQuantityBy)
