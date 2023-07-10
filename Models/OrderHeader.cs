@@ -25,7 +25,7 @@ namespace MerchantApi.Models
         public int TotalItems { get; set; }
 
 
-    //    public IEnumerable<OrderDetails> OrderDetails { get; set; }
-    //}
-}
+        public IEnumerable<OrderDetails> OrderDetails { get; set; }
+    
+     }
 }
