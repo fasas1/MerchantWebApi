@@ -9,8 +9,6 @@ namespace MerchantApi.Models.DTO
         public string PickUpName { get; set; }
         public string PickUpPhoneNumber { get; set; }
         public string PickUpEmail { get; set; }
-
-        public DateTime OrderDate { get; set; }
         public string PaystackPaymentIntentId { get; set; }
         public string Status { get; set; }
   

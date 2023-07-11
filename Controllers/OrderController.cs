@@ -31,7 +31,7 @@ namespace MerchantApi.Controllers
                      .ThenInclude(u => u.Product).OrderByDescending(u => u.OrderHeaderId);
                 if (!string.IsNullOrEmpty(userId))
                 {
-                  _response.Result = orderHeaders.Where(u => u.ApplicationUserId == userId);
+                    _response.Result = orderHeaders.Where(u => u.ApplicationUserId == userId);
                 }
 
                 else
@@ -47,36 +47,36 @@ namespace MerchantApi.Controllers
             }
             return _response;
         }
-    
-        [HttpGet("[id:int}")]
+
+        [HttpGet("{id:int}")]
         public async Task<ActionResult<ApiResponse>> GetOrder(int id)
         {
             try
             {
-              if(id == 0)
+                if (id == 0)
                 {
                     _response.StatusCode = HttpStatusCode.BadRequest;
                     return BadRequest(_response);
                 }
-               var orderHeaders = _db.OrderHeaders.Include(u => u.OrderDetails)
-                    .ThenInclude(u => u.Product).Where(u => u.OrderHeaderId ==id);
-                if(orderHeaders == null)
+                var orderHeaders = _db.OrderHeaders.Include(u => u.OrderDetails)
+                     .ThenInclude(u => u.Product).Where(u => u.OrderHeaderId == id);
+                if (orderHeaders == null)
                 {
                     _response.StatusCode = HttpStatusCode.NotFound;
                     return NotFound(_response);
 
                 }
-          
+
                 _response.Result = orderHeaders;
                 _response.StatusCode = HttpStatusCode.OK;
                 return Ok(_response);
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
                 _response.IsSuccess = false;
                 _response.ErrorMessages
                      = new List<string>() { ex.ToString() };
-                
+
             }
             return _response;
         }
@@ -130,9 +130,59 @@ namespace MerchantApi.Controllers
             }
             return _response;
         }
+        [HttpPut("{id:int}")]
+        public async Task<ActionResult<ApiResponse>> UpdateOrder(int id,[FromBody] OrderHeaderUpdateDTO orderHeaderUpdateDTO)
+        {
+            try
+            {
+                if(orderHeaderUpdateDTO == null || id != orderHeaderUpdateDTO.OrderHeaderId)
+                {
+                    _response.IsSuccess = false;
+                    _response.StatusCode = HttpStatusCode.BadRequest;
+                    return BadRequest();
+                }
+                OrderHeader orderFromDb = _db.OrderHeaders.FirstOrDefault(U => U.OrderHeaderId == id);
+                if(orderFromDb == null)
+                {
+                    _response.IsSuccess = false;
+                    _response.StatusCode = HttpStatusCode.BadRequest;
+                    return BadRequest();
+                }
+                if (!string.IsNullOrEmpty(orderHeaderUpdateDTO.PickUpName))
+                {
+                    orderFromDb.PickUpName = orderHeaderUpdateDTO.PickUpName;
+                }
+                if (!string.IsNullOrEmpty(orderHeaderUpdateDTO.PickUpPhoneNumber))
+                {
+                    orderFromDb.PickUpPhoneNumber = orderHeaderUpdateDTO.PickUpPhoneNumber;
+                }
+                if (!string.IsNullOrEmpty(orderHeaderUpdateDTO.PickUpEmail))
+                {
+                    orderFromDb.PickUpEmail = orderHeaderUpdateDTO.PickUpEmail;
+                }
+                if (!string.IsNullOrEmpty(orderHeaderUpdateDTO.Status))
+                {
+                    orderFromDb.Status = orderHeaderUpdateDTO.Status;
+                }
+                if (!string.IsNullOrEmpty(orderHeaderUpdateDTO.PaystackPaymentIntentId))
+                {
+                    orderFromDb.PaystackPaymentIntentId = orderHeaderUpdateDTO.PaystackPaymentIntentId;
+                }
+                _db.SaveChanges();
+                _response.StatusCode = HttpStatusCode.NoContent;
+                _response.IsSuccess = true;
+                return Ok(_response);
+            }
+            
+            catch(Exception ex)
+            {
+                _response.IsSuccess = false;
+                _response.ErrorMessages =
+                    new List<string>() { ex.ToString() };
+
+            }
+            return _response;
+        }
 
     }
-
-
-
 }
