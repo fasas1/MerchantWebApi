@@ -5,6 +5,8 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using System.Net;
 
+using MerchantApi.Utility;
+
 namespace MerchantApi.Controllers
 {
     [Route("api/[controller]")]
@@ -19,7 +21,7 @@ namespace MerchantApi.Controllers
             _response = new ApiResponse();
         }
         [HttpGet]
-        public async Task<ActionResult<ApiResponse>> GetOrders(string? orderId)
+        public async Task<ActionResult<ApiResponse>> GetOrders(string? userId)
         {
             try
             {
@@ -27,8 +29,9 @@ namespace MerchantApi.Controllers
                      .ThenInclude(u => u.Product).OrderByDescending(u => u.OrderHeaderId);
                 if (!string.IsNullOrEmpty(userId))
                 {
-                    _response.Result = orderHeaders.Where(u => u.ApplicationUserId == userId);
+                  _response.Result = orderHeaders.Where(u => u.ApplicationUserId == userId);
                 }
+
                 else
                 {
                     _response.Result = orderHeaders;
