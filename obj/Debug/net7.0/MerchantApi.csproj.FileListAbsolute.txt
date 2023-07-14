@@ -87,3 +87,5 @@ C:\Users\BABZ\source\repos\MerchantApi\obj\Debug\net7.0\refint\MerchantApi.dll
 C:\Users\BABZ\source\repos\MerchantApi\obj\Debug\net7.0\MerchantApi.pdb
 C:\Users\BABZ\source\repos\MerchantApi\obj\Debug\net7.0\MerchantApi.genruntimeconfig.cache
 C:\Users\BABZ\source\repos\MerchantApi\obj\Debug\net7.0\ref\MerchantApi.dll
+C:\Users\BABZ\source\repos\MerchantApi\bin\Debug\net7.0\PayStack.Net.dll
+C:\Users\BABZ\source\repos\MerchantApi\bin\Debug\net7.0\Paystack.Net.SDK.dll
