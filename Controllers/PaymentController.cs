@@ -45,25 +45,20 @@ namespace MerchantApi.Controllers
             }
 
             // Make Payment
-
-            double carttotal = shoppingCart.CartItems.Sum(u => u.Quantity * u.Product.Price);
+           shoppingCart.CartTotal = shoppingCart.CartItems.Sum(u => u.Quantity * u.Product.Price);
             TransactionInitializeRequest request = new()
             {
-                AmountInKobo = (int)(carttotal*100),
+                AmountInKobo = (int)(shoppingCart.CartTotal * 100),
                 //Reference = Generate().ToString(),
                 Currency = "NGN",
                 CallbackUrl = "http://localhost:36222/donate/verify"
             };
-      
-
             var response  = Paystack.Transactions.Initialize(request);
             if (response.Status)
             {
                 // Redirect the user to the Paystack payment page
                 return Redirect(response.Data.AuthorizationUrl);
             }
-        
-
             _response.Result = shoppingCart;
             _response.StatusCode = HttpStatusCode.OK;
             return Ok(_response);
