@@ -51,7 +51,6 @@ namespace MerchantApi.Controllers
                 AmountInKobo = (int)(shoppingCart.CartTotal * 100),
                 //Reference = Generate().ToString(),
                 Currency = "NGN",
-                CallbackUrl = "http://localhost:36222/donate/verify"
             };
             var response  = Paystack.Transactions.Initialize(request);
             if (response.Status)
