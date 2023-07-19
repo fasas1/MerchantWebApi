@@ -84,7 +84,7 @@ namespace MerchantApi.Controllers
         }
 
         [HttpPut("{id:int}", Name ="GetProduct")]
-        public async Task <ActionResult<ApiResponse>> UpdateProduct(int id, [FromBody]  ProductUpdateDTO productUpdateDTO)
+        public async Task <ActionResult<ApiResponse>> UpdateProduct(int id, [FromBody] ProductUpdateDTO productUpdateDTO)
         {
             try
             {
