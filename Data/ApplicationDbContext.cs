@@ -33,19 +33,19 @@ namespace MerchantApi.Data
              }, new Product
              {
                  Id = 2,
-                 Name = "Asus ROG",
-                 Description = "Asus ROG Strix G713M - 32gb RAM - 1tb SSD - Ryzen 7 - 11th Generation - RGB Backlit - 6gb Nvidia RTX 3060 - Pickup available at  No. 1 Kodeosho street, Obafemi Awolowo way Ikeja, Computer Village, Lagos State.",
-                 Image = "https://res.cloudinary.com/dgsjzsrw4/image/upload/v1691699431/Asus_c5fdte.jpg",
-                 Price = 760000,
-                 Category = "Laptop",
+                 Name = "Iphone 14 Promax",
+                 Description = "Iphone 14 Promax Midnight Purple - 512gb Storage - Factory Unlock - Pickup available at  No. 1 Kodeosho street, Obafemi Awolowo way Ikeja, Computer Village, Lagos State.",
+                 Image = "https://res.cloudinary.com/dgsjzsrw4/image/upload/v1691699516/iphone_14_purple_ck04dl.png",
+                 Price = 750000,
+                 Category = "Iphone",
 
              }, new Product
              {
                  Id = 3,
-                 Name = "Iphone 13Pro",
-                 Description = "Iphoe 13Pro - 512gb Storage - Factory Unlock - Pickup available at  No. 1 Kodeosho street, Obafemi Awolowo way Ikeja, Computer Village, Lagos State.",
+                 Name = "Iphone 13 Pro",
+                 Description = "Iphone 13 Pro - 512gb Storage - Factory Unlock - Pickup available at  No. 1 Kodeosho street, Obafemi Awolowo way Ikeja, Computer Village, Lagos State.",
                  Image = "https://res.cloudinary.com/dgsjzsrw4/image/upload/v1691669759/iphone12_fid8e0.png",
-                 Price = 420000,
+                 Price = 540000,
                  Category = "Iphone",
 
              }, new Product
@@ -60,36 +60,36 @@ namespace MerchantApi.Data
              }, new Product
              {
                  Id = 5,
-                 Name = "Boat Airpod",
-                 Description = "Iwatch Series 7 - 44MM - GPS and Cellular - Pickup available at  No. 1 Kodeosho street, Obafemi Awolowo way Ikeja, Computer Village, Lagos State.",
-                 Image = "https://res.cloudinary.com/dgsjzsrw4/image/upload/v1691699452/earbuds-prod-5_qmfxjx.webp",
-                 Price = 84000,
+                 Name = "Oraimo Airpod",
+                 Description = "Oraimo Riff Smaller For Comfort TWS True Wireless Earbuds - 4 COLORS - Pickup available at  No. 1 Kodeosho street, Obafemi Awolowo way Ikeja, Computer Village, Lagos State.",
+                 Image = "https://res.cloudinary.com/dgsjzsrw4/image/upload/v1691871784/earbuds-prod-4_la7u7j.webp",
+                 Price = 34000,
                  Category = "Airpod",
 
              }, new Product
              {
                  Id = 6,
-                 Name = "Cod Speaker",
-                 Description = "Powerful and Precise. Stone 1000v2 is the premier wireless speaker that provides the best audio in the business. With its 14W stereo sound, get a boogie on and party all night.- Pickup available at  No. 1 Kodeosho street, Obafemi Awolowo way Ikeja, Computer Village, Lagos State.",
-                 Image = "https://res.cloudinary.com/dgsjzsrw4/image/upload/v1691699575/speaker-prod-5_tn33fk.webp",
-                 Price = 196000,
+                 Name = "Iphone 13 Pro",
+                 Description = "Iphone 13 Pro 256gb - Starlight Blue - Factory Unlock - Pickup available at  No. 1 Kodeosho street, Obafemi Awolowo way Ikeja, Computer Village, Lagos State.",
+                 Image = "https://res.cloudinary.com/dgsjzsrw4/image/upload/v1691871777/13pro_blue_ws4pjl.png",
+                 Price = 496000,
                  Category = "Speaker",
 
              }, new Product
              {
                  Id = 7,
-                 Name = "Iphone 14 Promax",
-                 Description = "Iphoe 14 Promax - 512gb Storage - Factory Unlock - Pickup available at  No. 1 Kodeosho street, Obafemi Awolowo way Ikeja, Computer Village, Lagos State.",
-                 Image = "https://res.cloudinary.com/dgsjzsrw4/image/upload/v1691699516/iphone_14_purple_ck04dl.png",
-                 Price = 750000,
-                 Category = "Iphone",
+                 Name = "Samsung Watch 5",
+                 Description = "Samsung Galaxy Watch 5 Classic 46mm, Bluetooth Smartwatch - Pickup available at  No. 1 Kodeosho street, Obafemi Awolowo way Ikeja, Computer Village, Lagos State.",
+                 Image = "https://res.cloudinary.com/dgsjzsrw4/image/upload/v1691871415/watch-prod-2_eya0ym.webp",
+                 Price = 250000,
+                 Category = "Watch",
 
              }, new Product
              {
                  Id = 8,
-                 Name = "Iphone 13",
-                 Description = "Iphone 13 - 256gb Storage - Factory Unlock - Pacific Blue Color - Pickup available at  No. 1 Kodeosho street, Obafemi Awolowo way Ikeja, Computer Village, Lagos State.",
-                 Image = "https://res.cloudinary.com/dgsjzsrw4/image/upload/v1691699315/13_mini_ap8vpd.png",
+                 Name = "Iphone 13 Promax",
+                 Description = "Iphone 13 Promax - 256gb Storage - Factory Unlock - Pacific Gold Color - Pickup available at  No. 1 Kodeosho street, Obafemi Awolowo way Ikeja, Computer Village, Lagos State.",
+                 Image = "https://res.cloudinary.com/dgsjzsrw4/image/upload/v1691871765/13_pro_gold_gzh0ao.png",
                  Price = 460000,
                  Category = "Iphone",
 
