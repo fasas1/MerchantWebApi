@@ -1,0 +1,17 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<!--
+https://go.microsoft.com/fwlink/?LinkID=208121.
+-->
+<Project>
+  <PropertyGroup>
+    <TimeStampOfAssociatedLegacyPublishXmlFile />
+    <_PublishTargetUrl>C:\Users\BABZ\Desktop\Project</_PublishTargetUrl>
+    <History>True|2023-09-15T14:42:09.3777973Z;</History>
+    <LastFailureDetails />
+  </PropertyGroup>
+  <ItemGroup>
+    <DestinationConnectionStrings Include="DefaultConnection">
+      <Value>workstation id=MerchantGadgetApi.mssql.somee.com%3bpacket size=4096%3buser id=fasas1_SQLLogin_1%3bpwd=khxzd7doy4%3bdata source=MerchantGadgetApi.mssql.somee.com%3bpersist security info=False%3binitial catalog=MerchantGadgetApi</Value>
+    </DestinationConnectionStrings>
+  </ItemGroup>
+</Project>

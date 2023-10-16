@@ -16,7 +16,7 @@ namespace MerchantApi.Data
         public DbSet<CartItem> CartItems { get; set; }
         public DbSet<OrderHeader> OrderHeaders { get; set; }
         public DbSet<OrderDetails> OrderDetails { get; set; }
-
+        public DbSet<TransactionModel> Transactions { get; set; }
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             base.OnModelCreating(modelBuilder);

@@ -9,6 +9,8 @@ using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.IdentityModel.Tokens;
 using System.Text;
 using Microsoft.OpenApi.Models;
+using Microsoft.Extensions.DependencyInjection;
+
 
 var builder = WebApplication.CreateBuilder(args);
 // Add services to the container.
@@ -20,6 +22,10 @@ builder.Services.AddDbContext<ApplicationDbContext>(option =>
 {
     option.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection"));
 });
+
+    builder.Services.AddHttpClient();
+
+ 
 builder.Services.AddIdentity<ApplicationUser, IdentityRole>().AddEntityFrameworkStores<ApplicationDbContext>();
 
 builder.Services.Configure<IdentityOptions>(options =>
@@ -47,6 +53,7 @@ builder.Services.AddAuthentication(u =>
         ValidateAudience = false
     };
 });
+
 
 builder.Services.AddCors();
 
@@ -82,6 +89,8 @@ builder.Services.AddSwaggerGen(options =>
     });
 });
 
+
+
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
@@ -92,6 +101,12 @@ if (app.Environment.IsDevelopment())
 }
 
 app.UseHttpsRedirection();
+//app.UseCors("AllowAll"); // Use the policy name as a string
+//app.UseCors(builder => builder
+//    .WithOrigins("https://localhost:3000")
+//    .AllowAnyHeader()
+//    .AllowAnyMethod()
+//    .AllowAnyOrigin());
 app.UseCors(o => o.AllowAnyHeader().AllowAnyMethod().AllowAnyOrigin());
 app.UseAuthentication();
 app.UseAuthorization();
