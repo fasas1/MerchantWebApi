@@ -24,31 +24,31 @@ public class PaymentController : ControllerBase
         Paystack = new PayStackApi(token);
     }
 
-    [HttpPost("make-payment")]
+    [HttpPost("makePayment")]
     public async Task<IActionResult> MakePayment([FromBody] PaymentRequestDTO paymentRequest)
     {
 
-        ShoppingCart shoppingCart = _db.ShoppingCarts
-        .Include(u => u.CartItems)
-        .ThenInclude(u => u.Product)
-        .FirstOrDefault(u => u.UserId == paymentRequest.UserId);
+        //ShoppingCart shoppingCart = _db.ShoppingCarts
+        //.Include(u => u.CartItems)
+        //.ThenInclude(u => u.Product)
+        //.FirstOrDefault(u => u.UserId == paymentRequest.UserId);
 
-        if (shoppingCart == null || shoppingCart.CartItems == null || shoppingCart.CartItems.Count() == 0)
-        {
-            return BadRequest("Shopping cart is empty.");
-        }
+        //if (shoppingCart == null || shoppingCart.CartItems == null || shoppingCart.CartItems.Count() == 0)
+        //{
+        //    return BadRequest("Shopping cart is empty.");
+        //}
 
-        // Calculate the total amount in kobo (1 Naira = 100 kobo)
-          int amountInKobo = (int)(shoppingCart.CartItems.Sum(u => u.Quantity * u.Product.Price) * 100);
+        //// Calculate the total amount in kobo (1 Naira = 100 kobo)
+        //  int amountInKobo = (int)(shoppingCart.CartItems.Sum(u => u.Quantity * u.Product.Price) * 100);
 
         
         var transactionInitializeRequest = new TransactionInitializeRequest
         {
-            AmountInKobo = amountInKobo,// Convert amount to kobo (1 Naira = 100 kobo)
+            AmountInKobo = (int)(paymentRequest.Amount), // Convert amount to kobo (1 Naira = 100 kobo)
             Email = paymentRequest.Email,
             Reference = Guid.NewGuid().ToString(), // Generate a unique reference
             Currency = "NGN", // Nigerian Naira
-            CallbackUrl = paymentRequest.CallbackUrl
+           // CallbackUrl = paymentRequest.CallbackUrl
         };
 
         var response = Paystack.Transactions.Initialize(transactionInitializeRequest);
@@ -57,7 +57,7 @@ public class PaymentController : ControllerBase
         {
             var transaction = new TransactionModel()
             {
-                Amount = amountInKobo,  // Convert back to Naira
+                Amount = paymentRequest.Amount, // Convert back to Naira
                 Email = paymentRequest.Email,
                 TrxRef = Guid.NewGuid().ToString(),
                 Name = paymentRequest.Name// Set the customer's name

@@ -1,13 +1,10 @@
 ﻿using MerchantApi.Data;
 using MerchantApi.Models;
-using Microsoft.AspNetCore.Http;
+using MerchantApi.Models.DTO;
+using MerchantApi.Utility;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using System.Net;
-
-using MerchantApi.Utility;
-using MerchantApi.Models.DTO;
-using Azure;
 
 namespace MerchantApi.Controllers
 {
